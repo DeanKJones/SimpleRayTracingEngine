@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x86</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{761BB250-9058-3553-875B-B13464D29301}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>SimpleRayTraceEngine</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Prog\SimpleRayTracingEngine\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SimpleRayTraceEngine.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SimpleRayTraceEngine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Prog\SimpleRayTracingEngine\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SimpleRayTraceEngine.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SimpleRayTraceEngine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\Prog\SimpleRayTracingEngine\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">SimpleRayTraceEngine.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">SimpleRayTraceEngine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\Prog\SimpleRayTracingEngine\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">SimpleRayTraceEngine.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">SimpleRayTraceEngine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/Prog/SimpleRayTracingEngine/build/Debug/SimpleRayTraceEngine.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/Prog/SimpleRayTracingEngine/build/Debug/SimpleRayTraceEngine.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/Prog/SimpleRayTracingEngine/build/Release/SimpleRayTraceEngine.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/Prog/SimpleRayTracingEngine/build/Release/SimpleRayTraceEngine.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/Prog/SimpleRayTracingEngine/build/MinSizeRel/SimpleRayTraceEngine.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/Prog/SimpleRayTracingEngine/build/MinSizeRel/SimpleRayTraceEngine.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>G:/Prog/SimpleRayTracingEngine/build/RelWithDebInfo/SimpleRayTraceEngine.lib</ImportLibrary>
+      <ProgramDataBaseFile>G:/Prog/SimpleRayTracingEngine/build/RelWithDebInfo/SimpleRayTraceEngine.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Prog\SimpleRayTracingEngine\CMakeLists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule G:/Prog/SimpleRayTracingEngine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\bin\cmake.exe -SG:/Prog/SimpleRayTracingEngine -BG:/Prog/SimpleRayTracingEngine/build --check-stamp-file G:/Prog/SimpleRayTracingEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeCCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeCXXCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeRCCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCCompilerABI.c;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeGenericSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeRCInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystem.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GNU-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\HP-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XL-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\zOS-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CompilerId\VS-10.vcxproj.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule G:/Prog/SimpleRayTracingEngine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\bin\cmake.exe -SG:/Prog/SimpleRayTracingEngine -BG:/Prog/SimpleRayTracingEngine/build --check-stamp-file G:/Prog/SimpleRayTracingEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeCCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeCXXCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeRCCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCCompilerABI.c;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeGenericSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeRCInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystem.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GNU-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\HP-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XL-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\zOS-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CompilerId\VS-10.vcxproj.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule G:/Prog/SimpleRayTracingEngine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\bin\cmake.exe -SG:/Prog/SimpleRayTracingEngine -BG:/Prog/SimpleRayTracingEngine/build --check-stamp-file G:/Prog/SimpleRayTracingEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeCCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeCXXCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeRCCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCCompilerABI.c;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeGenericSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeRCInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystem.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GNU-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\HP-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XL-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\zOS-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CompilerId\VS-10.vcxproj.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule G:/Prog/SimpleRayTracingEngine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\bin\cmake.exe -SG:/Prog/SimpleRayTracingEngine -BG:/Prog/SimpleRayTracingEngine/build --check-stamp-file G:/Prog/SimpleRayTracingEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeCCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeCXXCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeRCCompiler.cmake;G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\3.20.0-rc3\CMakeSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCCompilerABI.c;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCXXInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCommonLanguageInclude.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeCompilerIdDetection.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCXXCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompileFeatures.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompilerABI.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineCompilerId.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineRCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeDetermineSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeFindBinUtils.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeGenericSystem.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeInitializeConfigs.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeLanguageInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseImplicitIncludeInfo.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseImplicitLinkInfo.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeParseLibraryArchitecture.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeRCCompiler.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeRCInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystem.cmake.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystemSpecificInformation.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeSystemSpecificInitialize.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCXXCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestCompilerCommon.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CMakeTestRCCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ADSP-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ARMCC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\ARMClang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\AppleClang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Borland-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\CMakeCommonCompilerMacros.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Cray-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GHS-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GNU-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\HP-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IAR-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Intel-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-C.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\MSVC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\NVHPC-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\PGI-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\PathScale-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SCO-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\TI-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\Watcom-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XL-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XLClang-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\zOS-C-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\CompilerId\VS-10.vcxproj.in;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Internal\FeatureTesting.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-Determine-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC-C.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC-CXX.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows-MSVC.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\Windows.cmake;G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\share\cmake-3.20\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">G:\Prog\SimpleRayTracingEngine\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\main.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Vec3.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Ray.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Hittable.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Sphere.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\Sphere.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\HittableList.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\HittableList.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Random.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Camera.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="G:\Prog\SimpleRayTracingEngine\build\ZERO_CHECK.vcxproj">
+      <Project>{AA265EAB-C7A0-32C5-A800-AF12038673FF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

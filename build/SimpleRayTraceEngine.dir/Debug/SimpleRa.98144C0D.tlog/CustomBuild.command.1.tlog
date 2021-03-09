@@ -1,0 +1,10 @@
+^E:\TD3\JONES_DEAN\SIMPLERAYTRACINGENGINE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/TD3/JONES_Dean/SimpleRayTracingEngine -BE:/TD3/JONES_Dean/SimpleRayTracingEngine/build --check-stamp-file E:/TD3/JONES_Dean/SimpleRayTracingEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

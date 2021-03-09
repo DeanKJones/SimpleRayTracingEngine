@@ -1,0 +1,10 @@
+^G:\PROG\SIMPLERAYTRACINGENGINE\CMAKELISTS.TXT
+setlocal
+G:\ProgExtra\cmake-3.20.0-rc3-windows-x86_64\bin\cmake.exe -SG:/Prog/SimpleRayTracingEngine -BG:/Prog/SimpleRayTracingEngine/build --check-stamp-file G:/Prog/SimpleRayTracingEngine/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
