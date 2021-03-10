@@ -5,23 +5,22 @@
 #include "HittableList.h"
 #include "Camera.h"
 #include "Random.h"
+#include "Material.h"
 
 float MAX_FLOAT = std::numeric_limits<float>::max();
 
-Vec3 randomInUnitSphere() {
-    Vec3 p;
-    do {
-        p = 2.0 * Vec3(randomDouble(), randomDouble(), randomDouble()) - Vec3(1, 1, 1);
-    } while (p.squaredLength() >= 1.0);
-    return p;
-}
-
-Vec3 color(const Ray& r, Hittable *world) 
+Vec3 color(const Ray& r, Hittable *world, int depth) 
 {
     hitRecord rec;
     if (world->hit(r, 0.001, MAX_FLOAT, rec)) {
-        Vec3 target = rec.p + rec.normal + randomInUnitSphere();
-        return 0.5 * color(Ray(rec.p, target - rec.p), world);
+        Ray scattered;
+        Vec3 attenuation;
+        if (depth < 50 && rec.matPtr->scatter(r, rec, attenuation, scattered)){
+            return attenuation * color(scattered, world, depth + 1);
+        }
+        else {
+            return Vec3(0, 0, 0);
+        }
     }
     else{
         Vec3 unitDirection = unitVector(r.direction());
@@ -33,18 +32,20 @@ Vec3 color(const Ray& r, Hittable *world)
 int main() 
 {
     std::ofstream output;
-    output.open("Renders//output_17.ppm");
+    output.open("Renders//output_18.ppm");
 
-    int nx = 200;    
-    int ny = 100;
+    int nx = 300;    
+    int ny = 200;
     int ns = 100;
 
     output << "P3\n" << nx << " " << ny << "\n255\n";
 
-    Hittable *list[2];
-    list[0] = new Sphere(Vec3(0, 0, -1), 0.5);
-    list[1] = new Sphere(Vec3(0, -100.5, -1), 100);
-    Hittable *world = new HittableList(list, 2);
+    Hittable *list[4];
+    list[0] = new Sphere(Vec3(0, 0, -1), 0.5, new Lambertian(Vec3(0.6, 0.3, 0.3)));
+    list[1] = new Sphere(Vec3(0, -100.5, -1), 100, new Lambertian(Vec3(0.8, 0.8, 0.8)));
+    list[2] = new Sphere(Vec3(1, 0, -1), 0.5, new Metal(Vec3(0.8, 0.6, 0.2)));
+    list[2] = new Sphere(Vec3(-1, 0, -1), 0.5, new Metal(Vec3(0.8, 0.8, 0.8)));
+    Hittable *world = new HittableList(list, 4);
 
     Camera Cam;
 
@@ -57,7 +58,7 @@ int main()
                 float v = float(j + randomDouble()) / float(ny);
 
                 Ray r = Cam.getRay(u, v);
-                col += color(r, world);
+                col += color(r, world, 0);
             }
 
             col /= float(ns);

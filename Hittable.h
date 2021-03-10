@@ -3,10 +3,12 @@
 
 #include "Ray.h"
 
+class Material;
 struct hitRecord{
     float t;
     Vec3 p;
     Vec3 normal;
+    Material *matPtr;
 };
 
 class Hittable {
