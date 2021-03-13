@@ -29,10 +29,50 @@ Vec3 color(const Ray& r, Hittable *world, int depth)
     }
 }
 
-int main() 
+Hittable *randomScene() {
+
+    int n = 500;
+    Hittable **list = new Hittable*[n + 1];
+    list[0] = new Sphere(Vec3(0, -1000, 0), 1000, new Lambertian(Vec3(0.5, 0.5, 0.5)));
+    int i = 1;
+    for (int a = -11; a < 11; a++) {
+        for (int b = -11; b < 11; b++) {
+            float chooseMat = randomDouble();
+            Vec3 center(a + 0.9 * randomDouble(), 0.2, b + 0.9 * randomDouble());
+                if ((center-Vec3(4, 0.2, 0)).length() > 0.9) {
+                    if (chooseMat < 0.8) { // diffuse
+                        list[i++] = new Sphere(center, 0.2,
+                            new Lambertian(Vec3(randomDouble()*randomDouble(),
+                                                randomDouble()*randomDouble(),
+                                                randomDouble()*randomDouble())
+                            )
+                        );
+                    }
+
+                    else if (chooseMat < 0.95) { // metal
+                        list[i++] = new Sphere(center, 0.2,
+                                new Metal(Vec3(0.5 * (1 + randomDouble()),
+                                                0.5 * (1 + randomDouble()),
+                                                0.5 * (1 + randomDouble())),
+                                                0.5 * randomDouble()));
+
+                    }
+                    else { // glass
+                        list[i++] = new Sphere(center, 0.2, new Dielectric(1.5));
+                    }
+                }
+            }
+        }
+        list[i++] = new Sphere(Vec3(0, 1, 0), 1.0, new Dielectric(1.5));
+        list[i++] = new Sphere(Vec3(-4, 1, 0), 1.0, new Lambertian(Vec3(0.4, 0.2, 0.1)));
+        list[i++] = new Sphere(Vec3(4, 1, 0), 1.0, new Metal(Vec3(0.7, 0.6, 0.5), 0.0));
+        return new HittableList(list,i);
+}
+
+int main()
 {
     std::ofstream output;
-    output.open("Renders//output_27.ppm");
+    output.open("Renders//output_30.ppm");
 
     int nx = 600;    
     int ny = 300;
@@ -40,16 +80,24 @@ int main()
 
     output << "P3\n" << nx << " " << ny << "\n255\n";
 
+/*
     Hittable *list[5];
     list[0] = new Sphere(Vec3(0, 0, -1), 0.5, new Lambertian(Vec3(0.6, 0.6, 0.6)));
     list[1] = new Sphere(Vec3(0, -100.5, -1), 100, new Lambertian(Vec3(0.4, 0.4, 0.4)));
     list[2] = new Sphere(Vec3(1, 0, -1), 0.5, new Metal(Vec3(0.8, 0.6, 0.2), 0.0));
     list[3] = new Sphere(Vec3(-1, 0, -1), 0.5, new Dielectric(1.5));
     list[4] = new Sphere(Vec3(-1, 0, -1), -0.45, new Dielectric(1.5));
-    Hittable *world = new HittableList(list, 5);
+*/
+
+    Hittable *world = randomScene();
 
     float R = cos(M_PI/4);
-    Camera Cam(Vec3(-2, 2, 1), Vec3(0, 0, -1), Vec3(0, 1, 0), 45, float(nx)/float(ny));
+    Vec3 lookFrom(-3, 3, 2);
+    Vec3 lookAt(0, 0, -1);
+    float distToFocus = (lookFrom - lookAt).length();
+    float aperture = 1.0;
+
+    Camera Cam(lookFrom, lookAt, Vec3(0, 1, 0), 60, float(nx)/float(ny), aperture, distToFocus);
 
     for (int j = ny - 1; j >= 0; j--) {
         for (int i = 0; i < nx; i++) 

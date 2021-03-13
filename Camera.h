@@ -3,13 +3,22 @@
 #define _USE_MATH_DEFINES
 
 #include "Ray.h"
+#include "Random.h"
 #include <math.h>
 
+Vec3 randomInUnitDisk() {
+    Vec3 p;
+    do {
+        p = 2.0 * Vec3(randomDouble(), randomDouble(), 0) - Vec3(1, 1, 0);
+    } while (dot(p, p) >= 1.0);
+    return p;
+}
 class Camera {
 public:
-    Camera(Vec3 lookFrom, Vec3 lookAt, Vec3 vUp, float vfov, float aspect) {
+    Camera(Vec3 lookFrom, Vec3 lookAt, Vec3 vUp, float vfov, float aspect,
+            float aperture, float focusDist) {
 
-        Vec3 u, v, w;
+        lensRadius = aperture / 2;
 
         float theta = vfov * M_PI / 180;
         float half_height = tan(theta / 2);
@@ -20,11 +29,13 @@ public:
         u = unitVector(cross(vUp, w));
         v = cross(w, u);
 
-        lowerLeftCorner = origin - half_width * u - half_height * v - w;
-        horizontal = 2 * half_width * u;
-        vertical = 2 * half_height * v;
+        lowerLeftCorner = origin - half_width * focusDist * u - half_height * focusDist * v - focusDist * w;
+        horizontal = 2 * half_width * focusDist * u;
+        vertical = 2 * half_height * focusDist * v;
     }
     Ray getRay(float s, float t) {
+        Vec3 rd = lensRadius * randomInUnitDisk();
+        Vec3 offset = u * rd.x() + v * rd.y();
         return Ray(origin, 
                     lowerLeftCorner + s * horizontal + t * vertical - origin);
     }
@@ -33,6 +44,8 @@ public:
     Vec3 lowerLeftCorner;
     Vec3 horizontal;
     Vec3 vertical;
+    Vec3 u, v, w;
+    float lensRadius;
 };
 
 #endif
