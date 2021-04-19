@@ -16,8 +16,11 @@ Vec3 randomInUnitDisk() {
 class Camera {
 public:
     Camera(Vec3 lookFrom, Vec3 lookAt, Vec3 vUp, float vfov, float aspect,
-            float aperture, float focusDist) {
+            float aperture, float focusDist,
+            double t0, double t1) {
 
+        time0 = t0;
+        time1 = t1;
         lensRadius = aperture / 2;
 
         float theta = vfov * M_PI / 180;
@@ -36,8 +39,10 @@ public:
     Ray getRay(float s, float t) {
         Vec3 rd = lensRadius * randomInUnitDisk();
         Vec3 offset = u * rd.x() + v * rd.y();
-        return Ray(origin, 
-                    lowerLeftCorner + s * horizontal + t * vertical - origin);
+        return Ray(origin + offset, 
+                    lowerLeftCorner + s * horizontal + t * vertical - origin - offset,
+                    randomDouble(time0, time1)
+                    );
     }
     
     Vec3 origin;
@@ -45,6 +50,7 @@ public:
     Vec3 horizontal;
     Vec3 vertical;
     Vec3 u, v, w;
+    double time0, time1;
     float lensRadius;
 };
 

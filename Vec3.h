@@ -5,6 +5,8 @@
 #include <cmath>
 #include <cstdlib>
 
+inline double randomDouble();
+inline double randomDouble(double min, double max);
 class Vec3 {
 public:
     Vec3() {}
@@ -161,5 +163,12 @@ inline Vec3 unitVector(Vec3 v) {
     return v / v.length();
 }
 
+inline static Vec3 Random() {
+    return Vec3(randomDouble(), randomDouble(), randomDouble());
+}
+
+inline static Vec3 Random(double min, double max) {
+    return Vec3(randomDouble(min,max), randomDouble(min,max), randomDouble(min,max));
+}
 
 #endif

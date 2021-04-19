@@ -29,3 +29,39 @@ bool Sphere::hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const
     }
     return false;
 }
+
+bool movingSphere::hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const 
+{
+    Vec3 oc = r.origin() - center(r.time());
+
+    auto a = r.direction().squaredLength();
+    auto half_b = dot(oc, r.direction());
+    auto c = oc.squaredLength() - radius * radius;
+
+    float discriminant = half_b * half_b - a*c;
+
+    if (discriminant < 0) 
+        return false;
+
+    auto sqrt_d = sqrt(discriminant);
+    
+    // Find the nearest root that lies in acceptable range
+    auto root = (-half_b - sqrt_d) / a;
+    if (root < tMin || tMax < root)
+    {
+        root = (-half_b + sqrt_d) / a;
+        if (root < tMin || tMax < root)
+        {
+            return false;
+        }
+    }
+
+    rec.t = root;
+    rec.p = r.pointAtParameter(rec.t);
+
+    auto outwardNormal = (rec.p - center(r.time())) / radius;
+    rec.setFaceNormal(r, outwardNormal);
+    rec.matPtr = matPtr;
+
+    return true;
+}

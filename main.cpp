@@ -4,7 +4,6 @@
 #include "Sphere.h"
 #include "HittableList.h"
 #include "Camera.h"
-#include "Random.h"
 #include "Material.h"
 
 float MAX_FLOAT = std::numeric_limits<float>::max();
@@ -40,16 +39,28 @@ Hittable *randomScene() {
             float chooseMat = randomDouble();
             Vec3 center(a + 0.9 * randomDouble(), 0.2, b + 0.9 * randomDouble());
                 if ((center-Vec3(4, 0.2, 0)).length() > 0.9) {
-                    if (chooseMat < 0.8) { // diffuse
+                    if (chooseMat < 0.8) 
+                    { // diffuse
+                        list[i++] = new movingSphere(
+                                        center,
+                                        center + Vec3(0, 0.5 * randomDouble(), 0),
+                                        0.0, 1.0, 0.2, 
+                                        new Lambertian(
+                                        Vec3(randomDouble()*randomDouble(),
+                                            randomDouble()*randomDouble(),
+                                            randomDouble()*randomDouble()))
+                        );
+
                         list[i++] = new Sphere(center, 0.2,
-                            new Lambertian(Vec3(randomDouble()*randomDouble(),
-                                                randomDouble()*randomDouble(),
-                                                randomDouble()*randomDouble())
-                            )
+                            new Lambertian(
+                                Vec3(randomDouble()*randomDouble(),
+                                     randomDouble()*randomDouble(),
+                                     randomDouble()*randomDouble()))
                         );
                     }
 
-                    else if (chooseMat < 0.95) { // metal
+                    else //(chooseMat < 0.95) 
+                    { // metal
                         list[i++] = new Sphere(center, 0.2,
                                 new Metal(Vec3(0.5 * (1 + randomDouble()),
                                                 0.5 * (1 + randomDouble()),
@@ -57,9 +68,12 @@ Hittable *randomScene() {
                                                 0.5 * randomDouble()));
 
                     }
-                    else { // glass
+                    /*
+                    else 
+                    { // glass
                         list[i++] = new Sphere(center, 0.2, new Dielectric(1.5));
                     }
+                    */
                 }
             }
         }
@@ -72,7 +86,7 @@ Hittable *randomScene() {
 int main()
 {
     std::ofstream output;
-    output.open("Renders//output_30.ppm");
+    output.open("output_01.ppm"); // "Renders_TheNextWeek//output_01.ppm"
 
     int nx = 600;    
     int ny = 300;
@@ -92,12 +106,12 @@ int main()
     Hittable *world = randomScene();
 
     float R = cos(M_PI/4);
-    Vec3 lookFrom(-3, 3, 2);
-    Vec3 lookAt(0, 0, -1);
-    float distToFocus = (lookFrom - lookAt).length();
-    float aperture = 1.0;
+    Vec3 lookFrom(13, 2, 3);
+    Vec3 lookAt(0, 0, 0);
+    float distToFocus = 10.0;
+    float aperture = 0.0;
 
-    Camera Cam(lookFrom, lookAt, Vec3(0, 1, 0), 60, float(nx)/float(ny), aperture, distToFocus);
+    Camera Cam(lookFrom, lookAt, Vec3(0, 1, 0), 20, float(nx)/float(ny), aperture, distToFocus, 0.0, 1.0);
 
     for (int j = ny - 1; j >= 0; j--) {
         for (int i = 0; i < nx; i++) 

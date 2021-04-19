@@ -1,3 +1,6 @@
+#ifndef MATERIALH
+#define MATERIALH
+
 #include "Ray.h"
 #include "Vec3.h"
 #include "Hittable.h"
@@ -14,9 +17,10 @@ class Lambertian : public Material {
 public:
     Lambertian(const Vec3& a) : albedo(a) {}
     virtual bool scatter(const Ray& r_in, const hitRecord& rec,
-                        Vec3& attenuation, Ray& scattered) const {
+                        Vec3& attenuation, Ray& scattered) const override {
         Vec3 target = rec.p + rec.normal + randomInUnitSphere();
-        scattered = Ray(rec.p, target - rec.p);
+
+        scattered = Ray(rec.p, target, r_in.time());
         attenuation = albedo;
         return true;
     }
@@ -40,7 +44,7 @@ public:
     virtual bool scatter(const Ray& r_in, const hitRecord& rec,
                         Vec3& attenuation, Ray& scattered) const {
         Vec3 reflected = reflect(unitVector(r_in.direction()), rec.normal);
-        scattered = Ray(rec.p, reflected + fuzz * randomInUnitSphere());
+        scattered = Ray(rec.p, reflected + fuzz * randomInUnitSphere(), r_in.time());
         attenuation = albedo;
         return (dot(scattered.direction(), rec.normal) > 0);
     }
@@ -103,13 +107,15 @@ public:
         }
 
         if (randomDouble() < reflectProb) {
-            scattered = Ray(rec.p, reflected);
+            scattered = Ray(rec.p, reflected, r_in.time());
         }
         else {
-            scattered = Ray(rec.p, refracted);
+            scattered = Ray(rec.p, refracted, r_in.time());
         }
 
         return true;
     }
     float ref_idx;
 };
+
+#endif
