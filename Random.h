@@ -3,8 +3,8 @@
 
 #include <functional>
 #include <random>
-#include "Vec3.h"
-//class Vec3;
+
+class Vec3;
 
 inline double randomDouble() {
     static std::uniform_real_distribution<double> distribution(0.0, 1.0);
@@ -24,7 +24,7 @@ inline double clamp(double x, double min, double max) {
     return x;
 }
 
-Vec3 randomInUnitSphere() {
+inline Vec3 randomInUnitSphere() {
     Vec3 p;
     do {
         p = 2.0 * Vec3(randomDouble(), randomDouble(), randomDouble()) - Vec3(1, 1, 1);
@@ -32,8 +32,16 @@ Vec3 randomInUnitSphere() {
     return p;
 }
 
-Vec3 random_unit_vector() {
+inline Vec3 randomUnitVector() {
     return unitVector(randomInUnitSphere());
+}
+
+inline static Vec3 Random() {
+    return Vec3(randomDouble(), randomDouble(), randomDouble());
+}
+
+inline static Vec3 Random(double min, double max) {
+    return Vec3(randomDouble(min,max), randomDouble(min,max), randomDouble(min,max));
 }
 
 #endif

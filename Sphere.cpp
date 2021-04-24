@@ -65,3 +65,7 @@ bool movingSphere::hit(const Ray& r, float tMin, float tMax, hitRecord& rec) con
 
     return true;
 }
+
+Vec3 movingSphere::center(float time) const{
+    return center0 + ((time - time0) / (time1 - time0)) * (center1 - center0);
+}

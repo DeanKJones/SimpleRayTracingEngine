@@ -4,7 +4,6 @@
 #include "Sphere.h"
 #include "HittableList.h"
 #include "Camera.h"
-#include "Material.h"
 
 float MAX_FLOAT = std::numeric_limits<float>::max();
 
@@ -86,7 +85,7 @@ Hittable *randomScene() {
 int main()
 {
     std::ofstream output;
-    output.open("output_01.ppm"); // "Renders_TheNextWeek//output_01.ppm"
+    output.open("Renders_TheNextWeek\\output_01.ppm"); // "Renders_TheNextWeek//output_01.ppm"
 
     int nx = 600;    
     int ny = 300;

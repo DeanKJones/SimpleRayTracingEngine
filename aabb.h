@@ -32,7 +32,7 @@ class aabb {
         Vec3 _max;
 };
 
-aabb surrounding_box(aabb box0, aabb box1) {
+inline aabb surrounding_box(aabb box0, aabb box1) {
     Vec3 small( ffmin(box0.min().x(), box1.min().x()),
                 ffmin(box0.min().y(), box1.min().y()),
                 ffmin(box0.min().z(), box1.min().z()));

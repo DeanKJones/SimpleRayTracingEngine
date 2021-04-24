@@ -29,7 +29,7 @@ public:
 
 // v3 reflect 
 
-Vec3 reflect(const Vec3& v, const Vec3& n) {
+inline Vec3 reflect(const Vec3& v, const Vec3& n) {
     return v - 2 * dot(v, n) * n;
 }
 
@@ -53,7 +53,7 @@ public:
 };
 
 // Refract
-bool refract(const Vec3& v, const Vec3& n, float ni_over_nt, Vec3& refracted) {
+inline bool refract(const Vec3& v, const Vec3& n, float ni_over_nt, Vec3& refracted) {
     Vec3 uv = unitVector(v);
     float dt = dot(uv, n);
     float discriminant = 1.0 - ni_over_nt * ni_over_nt * (1 - dt * dt);
@@ -66,7 +66,7 @@ bool refract(const Vec3& v, const Vec3& n, float ni_over_nt, Vec3& refracted) {
 }
 
 // Glass Reflectivity 
-float schlick(float cosine, float ref_idx) {
+inline float schlick(float cosine, float ref_idx) {
     float r0 = (1 - ref_idx) / (1 + ref_idx);
     r0 = r0 * r0;
     return r0 + (1 - r0) * pow((1 - cosine), 5);

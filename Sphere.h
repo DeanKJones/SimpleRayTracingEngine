@@ -22,17 +22,13 @@ public:
     : center0(cen0), center1(cen1), time0(t0), time1(t1), radius(r), matPtr(m) {};
 
     virtual bool hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const;
-    virtual bool boundingBox(float t0, float t1, aabb& box) const;
-    
+    //virtual bool boundingBox(float t0, float t1, aabb& box) const;
+   
     Vec3 center(float time) const;
     Vec3 center0, center1;
     double time0, time1;
     double radius;
     Material *matPtr;
 };
-
-Vec3 movingSphere::center(float time) const{
-    return center0 + ((time - time0) / (time1 - time0)) * (center1 - center0);
-}
 
 #endif
