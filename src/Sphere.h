@@ -10,6 +10,7 @@ public:
     Sphere() {}
     Sphere (Vec3 cen, float r, Material *m) : center(cen), radius(r), matPtr(m) {};
     virtual bool hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const;
+    bool boundingBox(float t0, float t1, aabb& box) const;
     Vec3 center;
     float radius;
     Material *matPtr;
@@ -22,7 +23,7 @@ public:
     : center0(cen0), center1(cen1), time0(t0), time1(t1), radius(r), matPtr(m) {};
 
     virtual bool hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const;
-    //virtual bool boundingBox(float t0, float t1, aabb& box) const;
+    virtual bool boundingBox(float t0, float t1, aabb& box) const;
    
     Vec3 center(float time) const;
     Vec3 center0, center1;

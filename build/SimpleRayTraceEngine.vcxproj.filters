@@ -10,6 +10,9 @@
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\toojpeg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Vec3.h">
@@ -37,6 +40,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\aabb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\toojpeg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\bvhNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

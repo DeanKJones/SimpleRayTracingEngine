@@ -41,6 +41,11 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "algorithm": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "functional": "cpp",
+        "list": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "xhash": "cpp"
     }
 }

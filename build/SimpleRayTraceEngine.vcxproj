@@ -317,6 +317,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Camera.h" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Material.h" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\aabb.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\toojpeg.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\toojpeg.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\bvhNode.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Color.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="G:\Prog\SimpleRayTracingEngine\build\ZERO_CHECK.vcxproj">

@@ -14,4 +14,9 @@ add_executable(SimpleRayTraceEngine src/main.cpp
                                     src/Random.h 
                                     src/Common/Camera.h 
                                     src/Material.h 
-                                    src/Common/aabb.h)
+                                    src/Common/aabb.h
+                                    src/Common/External/toojpeg.h
+                                    src/Common/External/toojpeg.cpp
+                                    src/bvhNode.h
+                                    src/Common/Color.h
+                                    src/Common/Texture.h)

@@ -2,6 +2,7 @@
 #define HITTABLEH
 
 #include "Ray.h"
+#include "Common\aabb.h"
 
 class Material;
 struct hitRecord{
@@ -19,12 +20,14 @@ struct hitRecord{
 
 class Hittable {
 public:
-    virtual bool hit(
-        const Ray& r, 
-        float tMin, 
-        float tMax, 
-        hitRecord& rec
-    ) const = 0;
+    virtual bool hit(const Ray& r, 
+                     float tMin, 
+                     float tMax, 
+                     hitRecord& rec) const = 0;
+
+    virtual bool boundingBox(float t0,
+                             float t1,
+                             aabb& box) const = 0;
 };
 
 #endif

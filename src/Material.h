@@ -5,6 +5,7 @@
 #include "Common\Vec3.h"
 #include "Hittable.h"
 #include "Random.h"
+#include "Common\Texture.h"
 
 class Material {
 public:
@@ -15,16 +16,17 @@ public:
 
 class Lambertian : public Material {
 public:
-    Lambertian(const Vec3& a) : albedo(a) {}
+    Lambertian(Texture *a) : albedo(a) {}
     virtual bool scatter(const Ray& r_in, const hitRecord& rec,
                         Vec3& attenuation, Ray& scattered) const override {
         Vec3 target = rec.p + rec.normal + randomInUnitSphere();
 
         scattered = Ray(rec.p, target, r_in.time());
-        attenuation = albedo;
+        attenuation = albedo->value(0, 0, rec.p);
         return true;
     }
-    Vec3 albedo;
+
+    Texture *albedo;
 };
 
 // v3 reflect 

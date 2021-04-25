@@ -30,6 +30,12 @@ bool Sphere::hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const
     return false;
 }
 
+bool Sphere::boundingBox(float t0, float t1, aabb& box) const {
+    box = aabb(center - Vec3(radius, radius, radius),
+    center + Vec3(radius, radius, radius));
+    return true;
+}
+
 bool movingSphere::hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const 
 {
     Vec3 oc = r.origin() - center(r.time());
@@ -63,6 +69,15 @@ bool movingSphere::hit(const Ray& r, float tMin, float tMax, hitRecord& rec) con
     rec.setFaceNormal(r, outwardNormal);
     rec.matPtr = matPtr;
 
+    return true;
+}
+
+bool movingSphere::boundingBox(float t0, float t1, aabb& box) const {
+    aabb box0(center(t0) - Vec3(radius, radius, radius),
+    center(t0) + Vec3(radius, radius, radius));
+    aabb box1(center(t1) - Vec3(radius, radius, radius),
+    center(t1) + Vec3(radius, radius, radius));
+    box = surroundingBox(box0, box1);
     return true;
 }
 

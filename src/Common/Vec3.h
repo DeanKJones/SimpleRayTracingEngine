@@ -55,6 +55,12 @@ public:
     float e[3];
 };
 
+// Type aliases for Vec3
+using point3 = Vec3;   // 3D point
+using color = Vec3;    // RGB color
+
+//
+
 inline std::istream &operator>>(std::istream &is, Vec3 &t) {
     is >> t.e[0] >> t.e[1] >> t.e[2];
     return is;

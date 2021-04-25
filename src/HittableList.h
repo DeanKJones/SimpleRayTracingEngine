@@ -19,6 +19,8 @@ public:
         hitRecord& rec
     ) const;
 
+    bool boundingBox(float t0, float t1, aabb& box) const;
+
     Hittable **list;
     int listSize;
 };
