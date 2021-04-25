@@ -305,17 +305,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\main.cpp" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Vec3.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Ray.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Hittable.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Sphere.h" />
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\Sphere.cpp" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\HittableList.h" />
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\HittableList.cpp" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Random.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Camera.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Material.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\main.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Vec3.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Ray.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Hittable.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Sphere.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\Sphere.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Random.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Camera.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Material.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\aabb.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="G:\Prog\SimpleRayTracingEngine\build\ZERO_CHECK.vcxproj">

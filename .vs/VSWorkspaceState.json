@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\build"
+    "\\src",
+    "\\src\\Common"
   ],
-  "SelectedNode": "\\main.cpp",
+  "SelectedNode": "\\src\\main.cpp",
   "PreviewInSolutionExplorer": false
 }

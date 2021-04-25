@@ -1,39 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\main.cpp">
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\Sphere.cpp">
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\Sphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\HittableList.cpp">
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Vec3.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Ray.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Ray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Hittable.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Hittable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Sphere.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\HittableList.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Random.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Camera.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\Material.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\aabb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
