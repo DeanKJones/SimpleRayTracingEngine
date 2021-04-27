@@ -1,123 +1,100 @@
-#ifndef MATERIALH
-#define MATERIALH
+#ifndef MATERIAL_H
+#define MATERIAL_H
 
-#include "Ray.h"
-#include "Common\Vec3.h"
-#include "Hittable.h"
-#include "Random.h"
-#include "Common\Texture.h"
+#include "Common\common.h"
+#include "Common\texture.h"
 
-class Material {
+struct hit_record;
+
+
+class material {
 public:
     virtual bool scatter(
-        const Ray& r_in, const hitRecord& rec, Vec3& attenuation,
-    Ray& scattered) const = 0;
+        const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+    ) const = 0;
 };
 
-class Lambertian : public Material {
-public:
-    Lambertian(Texture *a) : albedo(a) {}
-    virtual bool scatter(const Ray& r_in, const hitRecord& rec,
-                        Vec3& attenuation, Ray& scattered) const override {
-        Vec3 target = rec.p + rec.normal + randomInUnitSphere();
 
-        scattered = Ray(rec.p, target, r_in.time());
-        attenuation = albedo->value(0, 0, rec.p);
+class lambertian : public material {
+public:
+    lambertian(const color& a) : albedo(make_shared<solid_color>(a)) {}
+    lambertian(shared_ptr<texture> a) : albedo(a) {}
+
+    virtual bool scatter(
+        const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+    ) const override {
+        auto scatter_direction = rec.normal + random_unit_vector();
+
+        // Catch degenerate scatter direction
+        if (scatter_direction.near_zero())
+            scatter_direction = rec.normal;
+
+        scattered = ray(rec.p, scatter_direction, r_in.time());
+        attenuation = albedo->value(rec.u, rec.v, rec.p);
         return true;
     }
 
-    Texture *albedo;
+public:
+    shared_ptr<texture> albedo;
 };
 
-// v3 reflect 
 
-inline Vec3 reflect(const Vec3& v, const Vec3& n) {
-    return v - 2 * dot(v, n) * n;
-}
-
-class Metal : public Material {
+class metal : public material {
 public:
-    Metal(const Vec3& a, float f) : albedo(a) {
-        if (f < 1)
-            fuzz = f;
-        else
-            fuzz = 1;
-    }
-    virtual bool scatter(const Ray& r_in, const hitRecord& rec,
-                        Vec3& attenuation, Ray& scattered) const {
-        Vec3 reflected = reflect(unitVector(r_in.direction()), rec.normal);
-        scattered = Ray(rec.p, reflected + fuzz * randomInUnitSphere(), r_in.time());
+    metal(const color& a, double f) : albedo(a), fuzz(f < 1 ? f : 1) {}
+
+    virtual bool scatter(
+        const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+    ) const override {
+        vec3 reflected = reflect(unit_vector(r_in.direction()), rec.normal);
+        scattered = ray(rec.p, reflected + fuzz*random_in_unit_sphere(), r_in.time());
         attenuation = albedo;
         return (dot(scattered.direction(), rec.normal) > 0);
     }
-    Vec3 albedo;
-    float fuzz; //Roughness
-};
 
-// Refract
-inline bool refract(const Vec3& v, const Vec3& n, float ni_over_nt, Vec3& refracted) {
-    Vec3 uv = unitVector(v);
-    float dt = dot(uv, n);
-    float discriminant = 1.0 - ni_over_nt * ni_over_nt * (1 - dt * dt);
-    if (discriminant > 0) {
-        refracted = ni_over_nt * (uv - n * dt) - n * sqrt(discriminant);
-        return true;
-    }
-    else 
-        return false;
-}
-
-// Glass Reflectivity 
-inline float schlick(float cosine, float ref_idx) {
-    float r0 = (1 - ref_idx) / (1 + ref_idx);
-    r0 = r0 * r0;
-    return r0 + (1 - r0) * pow((1 - cosine), 5);
-}
-
-class Dielectric : public Material 
-{
 public:
-    Dielectric(float ri) : ref_idx(ri) {}
-    virtual bool scatter(const Ray& r_in, const hitRecord& rec, 
-                        Vec3& attenuation, Ray& scattered
-    ) const {
-        Vec3 outwardNormal;
-        Vec3 reflected = reflect(r_in.direction(), rec.normal);
-        float ni_over_nt;
-        attenuation = Vec3(1.0, 1.0, 1.0);
-        Vec3 refracted;
+    color albedo;
+    double fuzz;
+};
 
-        float reflectProb;
-        float cosine;
 
-        if (dot(r_in.direction(), rec.normal) > 0) {
-            outwardNormal = -rec.normal;
-            ni_over_nt = ref_idx;
-            cosine = ref_idx * dot(r_in.direction(), rec.normal) / r_in.direction().length();
-        }
-        else {
-            outwardNormal = rec.normal;
-            ni_over_nt = 1.0 / ref_idx;
-            cosine = -dot(r_in.direction(), rec.normal) / r_in.direction().length();
-        }
+class dielectric : public material {
+public:
+    dielectric(double index_of_refraction) : ir(index_of_refraction) {}
 
-        if (refract(r_in.direction(), outwardNormal, ni_over_nt, refracted)) {
-            reflectProb = schlick(cosine, ref_idx);
-        }
-        else {
-            reflectProb = 1.0;
-        }
+    virtual bool scatter(
+        const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered
+    ) const override {
+        attenuation = color(1.0, 1.0, 1.0);
+        double refraction_ratio = rec.front_face ? (1.0/ir) : ir;
 
-        if (randomDouble() < reflectProb) {
-            scattered = Ray(rec.p, reflected, r_in.time());
-        }
-        else {
-            scattered = Ray(rec.p, refracted, r_in.time());
-        }
+        vec3 unit_direction = unit_vector(r_in.direction());
+        double cos_theta = fmin(dot(-unit_direction, rec.normal), 1.0);
+        double sin_theta = sqrt(1.0 - cos_theta*cos_theta);
 
+        bool cannot_refract = refraction_ratio * sin_theta > 1.0;
+        vec3 direction;
+
+        if (cannot_refract || reflectance(cos_theta, refraction_ratio) > random_double())
+            direction = reflect(unit_direction, rec.normal);
+        else
+            direction = refract(unit_direction, rec.normal, refraction_ratio);
+
+        scattered = ray(rec.p, direction, r_in.time());
         return true;
     }
-    float ref_idx;
+
+public:
+    double ir; // Index of Refraction
+
+private:
+    static double reflectance(double cosine, double ref_idx) {
+        // Use Schlick's approximation for reflectance.
+        auto r0 = (1-ref_idx) / (1+ref_idx);
+        r0 = r0*r0;
+        return r0 + (1-r0)*pow((1 - cosine),5);
+    }
 };
+
 
 #endif

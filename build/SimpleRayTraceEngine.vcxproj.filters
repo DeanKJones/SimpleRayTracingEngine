@@ -4,39 +4,42 @@
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\Sphere.cpp">
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\sphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.cpp">
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\hittable_list.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\toojpeg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\bvh_node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\moving_sphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Vec3.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Ray.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\ray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Hittable.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\hittable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Sphere.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\hittable_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Random.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Material.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\aabb.h">
@@ -45,13 +48,31 @@
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\toojpeg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\bvhNode.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\bvh_node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Color.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Texture.h">
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\stb_image_write.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\perlin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\rtw_stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\moving_sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

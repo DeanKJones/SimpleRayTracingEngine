@@ -1,99 +1,87 @@
-#include <iostream>
-#include <fstream>
+#include "Common\common.h"
 #include "Common\External\toojpeg.h"
 
-#include "Sphere.h"
-#include "HittableList.h"
-#include "Common\Camera.h"
-#include "Common\Color.h"
+#include "Common\camera.h"
+#include "Common\color.h"
+#include "hittable_list.h"
+#include "material.h"
+#include "sphere.h"
+#include "moving_sphere.h"
+#include "Common\texture.h"
 
-float MAX_FLOAT = std::numeric_limits<float>::max();
+#include <iostream>
+#include <fstream>
 
-Vec3 RayColor(const Ray& r, Hittable *world, int depth) 
-{
-    hitRecord rec;
 
-    if (depth <= 0){
-        return color(0, 0, 0);
-    }
+color ray_color(const ray& r, const hittable& world, int depth) {
+    hit_record rec;
 
-    if (world->hit(r, 0.001, MAX_FLOAT, rec)) {
-        Ray scattered;
+    if (depth <= 0)
+        return color(0,0,0);
+
+    if (world.hit(r, 0.001, infinity, rec)) {
+        ray scattered;
         color attenuation;
-        if (depth < 50 && rec.matPtr->scatter(r, rec, attenuation, scattered)){
-            return attenuation * RayColor(scattered, world, depth + 1);
-        }
-        else {
-            return color(0, 0, 0);
-        }
+        if (rec.mat_ptr->scatter(r, rec, attenuation, scattered))
+            return attenuation * ray_color(scattered, world, depth-1);
+        return color(0,0,0);
     }
-    else{
-        Vec3 unitDirection = unitVector(r.direction());
-        float t = 0.5 * (unitDirection.y() + 1.0);
-        return (1.0 - t) * color(1.0, 1.0, 1.0) + t * color(0.5, 0.7, 1.0);
-    }
+
+    vec3 unit_direction = unit_vector(r.direction());
+    auto t = 0.5*(unit_direction.y() + 1.0);
+    return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
 }
 
-Hittable *randomScene() {
 
-    int n = 500;
-    Hittable **list = new Hittable*[n + 1];
+hittable_list random_scene() {
+    hittable_list world;
 
-    Texture *checker = new checkerTexture(new constantTexture(Vec3(0.2, 0.3, 0.1)),
-                                          new constantTexture(Vec3(0.9, 0.9, 0.9))   
-    );
-    list[0] = new Sphere(Vec3(0, -1000, 0), 1000, new Lambertian(checker));
+    auto checker = make_shared<checker_texture>(color(0.2, 0.3, 0.1), color(0.9, 0.9, 0.9));
+    world.add(make_shared<sphere>(point3(0,-1000,0), 1000, make_shared<lambertian>(checker)));
 
-    int i = 1;
     for (int a = -11; a < 11; a++) {
         for (int b = -11; b < 11; b++) {
-            float chooseMat = randomDouble();
-            Vec3 center(a + 0.9 * randomDouble(), 0.2, b + 0.9 * randomDouble());
-                if ((center-Vec3(4, 0.2, 0)).length() > 0.9) {
-                    if (chooseMat < 0.8) 
-                    { // diffuse
-                        list[i++] = new movingSphere(
-                                        center,
-                                        center + Vec3(0, 0.5 * randomDouble(), 0),
-                                        0.0, 1.0, 0.2, 
-                                        new Lambertian(new constantTexture(
-                                            Vec3(randomDouble()*randomDouble(),
-                                            randomDouble()*randomDouble(),
-                                            randomDouble()*randomDouble())))
-                        );
+            auto choose_mat = random_double();
+            point3 center(a + 0.9*random_double(), 0.2, b + 0.9*random_double());
 
-                        list[i++] = new Sphere(center, 0.2,
-                            new Lambertian(new constantTexture(
-                                Vec3(randomDouble()*randomDouble(),
-                                     randomDouble()*randomDouble(),
-                                     randomDouble()*randomDouble())))
-                        );
-                    }
+            if ((center - point3(4, 0.2, 0)).length() > 0.9) {
+                shared_ptr<material> sphere_material;
 
-                    else //(chooseMat < 0.95) 
-                    { // metal
-                        list[i++] = new Sphere(center, 0.2,
-                                new Metal(Vec3(0.5 * (1 + randomDouble()),
-                                                0.5 * (1 + randomDouble()),
-                                                0.5 * (1 + randomDouble())),
-                                                0.5 * randomDouble()));
-
-                    }
-                    /*
-                    else 
-                    { // glass
-                        list[i++] = new Sphere(center, 0.2, new Dielectric(1.5));
-                    }
-                    */
+                if (choose_mat < 0.8) {
+                    // diffuse
+                    auto albedo = color::random() * color::random();
+                    sphere_material = make_shared<lambertian>(albedo);
+                    auto center2 = center + vec3(0, random_double(0,.5), 0);
+                    world.add(make_shared<moving_sphere>(
+                        center, center2, 0.0, 1.0, 0.2, sphere_material));
+                } else if (choose_mat < 0.95) {
+                    // metal
+                    auto albedo = color::random(0.5, 1);
+                    auto fuzz = random_double(0, 0.5);
+                    sphere_material = make_shared<metal>(albedo, fuzz);
+                    world.add(make_shared<sphere>(center, 0.2, sphere_material));
+                } else {
+                    // glass
+                    sphere_material = make_shared<dielectric>(1.5);
+                    world.add(make_shared<sphere>(center, 0.2, sphere_material));
                 }
             }
         }
-        list[i++] = new Sphere(Vec3(0, 1, 0), 1.0, new Dielectric(1.5));
-        list[i++] = new Sphere(Vec3(-4, 1, 0), 1.0, new Lambertian(new constantTexture(Vec3(0.4, 0.2, 0.1))));
-        list[i++] = new Sphere(Vec3(4, 1, 0), 1.0, new Metal(Vec3(0.7, 0.6, 0.5), 0.0));
-        return new HittableList(list,i);
+    }
+
+    auto material1 = make_shared<dielectric>(1.5);
+    world.add(make_shared<sphere>(point3(0, 1, 0), 1.0, material1));
+
+    auto material2 = make_shared<lambertian>(color(0.4, 0.2, 0.1));
+    world.add(make_shared<sphere>(point3(-4, 1, 0), 1.0, material2));
+
+    auto material3 = make_shared<metal>(color(0.7, 0.6, 0.5), 0.0);
+    world.add(make_shared<sphere>(point3(4, 1, 0), 1.0, material3));
+
+    return world;
 }
 
+/*
 /// JPEG OUTPUT ///
 std::ofstream myFile("..\\Renders_TheNextWeek\\output_01.jpg", std::ios_base::out | std::ios_base::binary); 
 
@@ -102,63 +90,69 @@ void myOutput(unsigned char byte){
 }
 
 ///
-
-int main()
-{
-
-/*
-    std::ofstream output;
-    output.open("..\\Renders_TheNextWeek\\output_01.ppm"); // "Renders_TheNextWeek//output_01.ppm"
-
-    output << "P3\n" << nx << " " << ny << "\n255\n";
 */
 
-    const int width = 600;    
-    const int height = 300;
-    const int samplesPerPixel = 100;
-    const int maxDepth = 50;
+int main() {
 
-    auto image = new unsigned char[width * height * samplesPerPixel];
+    // Image
 
-    auto world = randomScene();
+    const auto aspect_ratio = 16.0 / 9.0;
+    const int image_width = 400;
+    const int image_height = static_cast<int>(image_width / aspect_ratio);
+    const int samples_per_pixel = 100;
+    const int max_depth = 50;
 
-    float R = cos(M_PI/4);
+    //auto image = new unsigned char[image_width * image_height * samples_per_pixel];
 
-    auto aspectRatio = 16.0 / 9.0;
-    point3 lookFrom(13, 2, 3);
-    point3 lookAt(0, 0, 0);
-    Vec3 vup(0, 1, 0);
+    // World
 
-    float distToFocus = 10.0;
-    float aperture = 0.0;
+    auto world = random_scene();
 
-    Camera Cam(lookFrom, lookAt, vup, 20, aspectRatio, aperture, distToFocus, 0.0, 1.0);
+    // Camera
 
-    for (int j = height - 1; j >= 0; --j) {
-        for (int i = 0; i < width; ++i) 
-        {
-            color pixelColor(0, 0, 0);
-            for (int s = 0; s < samplesPerPixel; ++s) {
-                auto u = (i + randomDouble()) / (width - 1);
-                auto v = (j + randomDouble()) / (height - 1);
+    point3 lookfrom(13,2,3);
+    point3 lookat(0,0,0);
+    vec3 vup(0,1,0);
+    auto dist_to_focus = 10.0;
+    auto aperture = 0.1;
 
-                Ray r = Cam.getRay(u, v);
-                pixelColor += RayColor(r, world, maxDepth);
+    camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
+
+    // Render
+
+    //std::ofstream output;
+    //output.open("..\\Renders_TheNextWeek\\output_01.ppm"); 
+    //output << "P3\n" << image_width << " " << image_height << "\n255\n";
+
+    std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+
+    for (int j = image_height-1; j >= 0; --j) {
+        std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
+        for (int i = 0; i < image_width; ++i) {
+            color pixel_color(0,0,0);
+            for (int s = 0; s < samples_per_pixel; ++s) {
+                auto u = (i + random_double()) / (image_width-1);
+                auto v = (j + random_double()) / (image_height-1);
+                ray r = cam.get_ray(u, v);
+                pixel_color += ray_color(r, world, max_depth);
             }
-
-            writeColor(std::cout, pixelColor, samplesPerPixel);
+            write_color(std::cout, pixel_color, samples_per_pixel);
 
             //output << ir << " " << ig << " " << ib << "\n";
         }
     }
-    //output.close();
 
+    //output.close();
+    std::cerr << "\nDone.\n";
+
+    /*
     const bool isRGB = true;
     const auto quality = 90;
     const bool downsample = false;
     const char* comment = "Render complete";
 
-    auto render = TooJpeg::writeJpeg(myOutput, world, width, height, isRGB, quality, downsample, comment);
+    auto render = TooJpeg::writeJpeg(myOutput, world, image_width, image_height, isRGB, quality, downsample, comment);
+    */
 
     return 0;
 }

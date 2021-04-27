@@ -1,86 +1,36 @@
-#include "Sphere.h"
+#include "sphere.h"
 
-bool Sphere::hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const 
-{
-    Vec3 oc = r.origin() - center;
-
-    float a = dot(r.direction(), r.direction());
-    float b = dot(oc, r.direction());
-    float c = dot(oc, oc) - radius * radius;
-    float discriminant = b*b - a*c;
-
-    if (discriminant > 0) {
-        float temp = (-b - sqrt(discriminant)) / a;
-        if (temp < tMax && temp > tMin) {
-            rec.t = temp;
-            rec.p = r.pointAtParameter(rec.t);
-            rec.normal = (rec.p - center) / radius;
-            rec.matPtr = matPtr;
-            return true;
-        }
-        temp = (-b + sqrt(discriminant)) / a;
-        if (temp < tMax && temp > tMin) {
-            rec.t = temp;
-            rec.p = r.pointAtParameter(rec.t);
-            rec.normal = (rec.p - center) / radius;
-            rec.matPtr = matPtr;
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Sphere::boundingBox(float t0, float t1, aabb& box) const {
-    box = aabb(center - Vec3(radius, radius, radius),
-    center + Vec3(radius, radius, radius));
-    return true;
-}
-
-bool movingSphere::hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const 
-{
-    Vec3 oc = r.origin() - center(r.time());
-
-    auto a = r.direction().squaredLength();
+bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) const {
+    vec3 oc = r.origin() - center;
+    auto a = r.direction().length_squared();
     auto half_b = dot(oc, r.direction());
-    auto c = oc.squaredLength() - radius * radius;
+    auto c = oc.length_squared() - radius*radius;
 
-    float discriminant = half_b * half_b - a*c;
+    auto discriminant = half_b*half_b - a*c;
+    if (discriminant < 0) return false;
+    auto sqrtd = sqrt(discriminant);
 
-    if (discriminant < 0) 
-        return false;
-
-    auto sqrt_d = sqrt(discriminant);
-    
-    // Find the nearest root that lies in acceptable range
-    auto root = (-half_b - sqrt_d) / a;
-    if (root < tMin || tMax < root)
-    {
-        root = (-half_b + sqrt_d) / a;
-        if (root < tMin || tMax < root)
-        {
+    // Find the nearest root that lies in the acceptable range.
+    auto root = (-half_b - sqrtd) / a;
+    if (root < t_min || t_max < root) {
+        root = (-half_b + sqrtd) / a;
+        if (root < t_min || t_max < root)
             return false;
-        }
     }
 
     rec.t = root;
-    rec.p = r.pointAtParameter(rec.t);
-
-    auto outwardNormal = (rec.p - center(r.time())) / radius;
-    rec.setFaceNormal(r, outwardNormal);
-    rec.matPtr = matPtr;
+    rec.p = r.at(rec.t);
+    vec3 outward_normal = (rec.p - center) / radius;
+    rec.set_face_normal(r, outward_normal);
+    get_sphere_uv(outward_normal, rec.u, rec.v);
+    rec.mat_ptr = mat_ptr;
 
     return true;
 }
 
-bool movingSphere::boundingBox(float t0, float t1, aabb& box) const {
-    aabb box0(center(t0) - Vec3(radius, radius, radius),
-    center(t0) + Vec3(radius, radius, radius));
-    aabb box1(center(t1) - Vec3(radius, radius, radius),
-    center(t1) + Vec3(radius, radius, radius));
-    box = surroundingBox(box0, box1);
+bool sphere::bounding_box(double time0, double time1, aabb& output_box) const {
+    output_box = aabb(
+        center - vec3(radius, radius, radius),
+        center + vec3(radius, radius, radius));
     return true;
-}
-
-Vec3 movingSphere::center(float time) const{
-    return center0 + ((time - time0) / (time1 - time0)) * (center1 - center0);
 }

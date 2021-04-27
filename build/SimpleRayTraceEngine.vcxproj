@@ -306,22 +306,29 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\main.cpp" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Vec3.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Ray.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Hittable.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Sphere.h" />
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\Sphere.cpp" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.h" />
-    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\HittableList.cpp" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Random.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Camera.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Material.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\vec3.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\ray.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\hittable.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\sphere.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\sphere.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\hittable_list.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\hittable_list.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\camera.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\material.h" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\aabb.h" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\toojpeg.h" />
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\toojpeg.cpp" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\bvhNode.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Color.h" />
-    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\Texture.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\bvh_node.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\bvh_node.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\color.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\texture.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\stb_image_write.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\External\stb_image.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\common.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\perlin.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\rtw_stb_image.h" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\moving_sphere.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\moving_sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="G:\Prog\SimpleRayTracingEngine\build\ZERO_CHECK.vcxproj">

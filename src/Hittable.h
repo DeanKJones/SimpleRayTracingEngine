@@ -1,33 +1,33 @@
-#ifndef HITTABLEH
-#define HITTABLEH
+#ifndef HITTABLE_H
+#define HITTABLE_H
 
-#include "Ray.h"
+#include "Common\common.h"
 #include "Common\aabb.h"
 
-class Material;
-struct hitRecord{
-    float t;
-    Vec3 p;
-    Vec3 normal;
-    Material *matPtr;
-    bool frontFace;
+class material;
 
-    inline void setFaceNormal(const Ray& r, const Vec3& outward_normal) {
-        frontFace = dot(r.direction(), outward_normal) < 0;
-        normal = frontFace ? outward_normal :-outward_normal;
+
+struct hit_record {
+    point3 p;
+    vec3 normal;
+    shared_ptr<material> mat_ptr;
+    double t;
+    double u;
+    double v;
+    bool front_face;
+
+    inline void set_face_normal(const ray& r, const vec3& outward_normal) {
+        front_face = dot(r.direction(), outward_normal) < 0;
+        normal = front_face ? outward_normal :-outward_normal;
     }
 };
 
-class Hittable {
-public:
-    virtual bool hit(const Ray& r, 
-                     float tMin, 
-                     float tMax, 
-                     hitRecord& rec) const = 0;
 
-    virtual bool boundingBox(float t0,
-                             float t1,
-                             aabb& box) const = 0;
+class hittable {
+    public:
+        virtual bool hit(const ray& r, double t_min, double t_max, hit_record& rec) const = 0;
+        virtual bool bounding_box(double time0, double time1, aabb& output_box) const = 0;
 };
+
 
 #endif

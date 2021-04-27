@@ -1,57 +1,60 @@
-#ifndef CAMERAH
-#define CAMERAH
-#define _USE_MATH_DEFINES
+#ifndef CAMERA_H
+#define CAMERA_H
 
-#include "..\Ray.h"
-#include "..\Random.h"
-#include <math.h>
+#include "common.h"
 
-Vec3 randomInUnitDisk() {
-    Vec3 p;
-    do {
-        p = 2.0 * Vec3(randomDouble(), randomDouble(), 0) - Vec3(1, 1, 0);
-    } while (dot(p, p) >= 1.0);
-    return p;
-}
-class Camera {
-public:
-    Camera(Vec3 lookFrom, Vec3 lookAt, Vec3 vUp, float vfov, float aspect,
-            float aperture, float focusDist,
-            double t0, double t1) {
+class camera {
+    public:
+        camera() : camera(point3(0,0,-1), point3(0,0,0), vec3(0,1,0), 40, 1, 0, 10) {}
 
-        time0 = t0;
-        time1 = t1;
-        lensRadius = aperture / 2;
+        camera(
+            point3 lookfrom,
+            point3 lookat,
+            vec3   vup,
+            double vfov,
+            double aspect_ratio,
+            double aperture,
+            double focus_dist,
+            double _time0 = 0,
+            double _time1 = 0
+        ) {
+            auto theta = degrees_to_radians(vfov);
+            auto h = tan(theta/2);
+            auto viewport_height = 2.0 * h;
+            auto viewport_width = aspect_ratio * viewport_height;
 
-        float theta = vfov * M_PI / 180;
-        float half_height = tan(theta / 2);
-        float half_width = aspect * half_height;
+            w = unit_vector(lookfrom - lookat);
+            u = unit_vector(cross(vup, w));
+            v = cross(w, u);
 
-        origin = lookFrom;
-        w = unitVector(lookFrom - lookAt);
-        u = unitVector(cross(vUp, w));
-        v = cross(w, u);
+            origin = lookfrom;
+            horizontal = focus_dist * viewport_width * u;
+            vertical = focus_dist * viewport_height * v;
+            lower_left_corner = origin - horizontal/2 - vertical/2 - focus_dist*w;
 
-        lowerLeftCorner = origin - half_width * focusDist * u - half_height * focusDist * v - focusDist * w;
-        horizontal = 2 * half_width * focusDist * u;
-        vertical = 2 * half_height * focusDist * v;
-    }
-    Ray getRay(float s, float t) {
-        Vec3 rd = lensRadius * randomInUnitDisk();
-        Vec3 offset = u * rd.x() + v * rd.y();
-        return Ray(origin + offset, 
-                    lowerLeftCorner + s * horizontal + t * vertical - origin - offset,
-                    randomDouble(time0, time1)
-                    );
-    }
-    
-    Vec3 origin;
-    Vec3 lowerLeftCorner;
-    Vec3 horizontal;
-    Vec3 vertical;
-    Vec3 u, v, w;
-    double time0, time1;
-    float lensRadius;
+            lens_radius = aperture / 2;
+            time0 = _time0;
+            time1 = _time1;
+        }
+
+        ray get_ray(double s, double t) const {
+            vec3 rd = lens_radius * random_in_unit_disk();
+            vec3 offset = u * rd.x() + v * rd.y();
+            return ray(
+                origin + offset,
+                lower_left_corner + s * horizontal + t * vertical - origin - offset,
+                random_double(time0, time1)
+            );
+        }
+
+    private:
+        point3 origin;
+        point3 lower_left_corner;
+        vec3 horizontal;
+        vec3 vertical;
+        vec3 u, v, w;
+        double lens_radius;
+        double time0, time1; 
 };
 
 #endif

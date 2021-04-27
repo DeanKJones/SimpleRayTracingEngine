@@ -1,35 +1,43 @@
-#ifndef SPHEREH
-#define SPHEREH
+#ifndef SPHERE_H
+#define SPHERE_H
 
-#include "Hittable.h"
-#include "Material.h"
-#include "Common\aabb.h"
+#include "Common\common.h"
 
-class Sphere: public Hittable {
+#include "hittable.h"
+
+
+class sphere : public hittable {
 public:
-    Sphere() {}
-    Sphere (Vec3 cen, float r, Material *m) : center(cen), radius(r), matPtr(m) {};
-    virtual bool hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const;
-    bool boundingBox(float t0, float t1, aabb& box) const;
-    Vec3 center;
-    float radius;
-    Material *matPtr;
-};
+    sphere() {}
 
-class movingSphere : public Hittable {
+    sphere(point3 cen, double r, shared_ptr<material> m)
+        : center(cen), radius(r), mat_ptr(m) {};
+
+    virtual bool hit(
+        const ray& r, double t_min, double t_max, hit_record& rec) const override;
+    
+    virtual bool bounding_box(double time0, double time1, aabb& output_box) const override;
+
 public:
-    movingSphere() {}
-    movingSphere(Vec3 cen0, Vec3 cen1, double t0, double t1, double r, Material *m)
-    : center0(cen0), center1(cen1), time0(t0), time1(t1), radius(r), matPtr(m) {};
-
-    virtual bool hit(const Ray& r, float tMin, float tMax, hitRecord& rec) const;
-    virtual bool boundingBox(float t0, float t1, aabb& box) const;
-   
-    Vec3 center(float time) const;
-    Vec3 center0, center1;
-    double time0, time1;
+    point3 center;
     double radius;
-    Material *matPtr;
+    shared_ptr<material> mat_ptr;
+
+private:
+    static void get_sphere_uv(const point3& p, double& u, double& v) {
+        // p: a given point on the sphere of radius one, centered at the origin.
+        // u: returned value [0,1] of angle around the Y axis from X=-1.
+        // v: returned value [0,1] of angle from Y=-1 to Y=+1.
+        //     <1 0 0> yields <0.50 0.50>       <-1  0  0> yields <0.00 0.50>
+        //     <0 1 0> yields <0.50 1.00>       < 0 -1  0> yields <0.50 0.00>
+        //     <0 0 1> yields <0.25 0.50>       < 0  0 -1> yields <0.75 0.50>
+
+        auto theta = acos(-p.y());
+        auto phi = atan2(-p.z(), p.x()) + pi;
+
+        u = phi / (2*pi);
+        v = theta / pi;
+    }
 };
 
 #endif

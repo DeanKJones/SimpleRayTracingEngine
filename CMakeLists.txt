@@ -4,19 +4,26 @@ project(SimpleRayTraceEngine)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(SimpleRayTraceEngine src/main.cpp 
-                                    src/Common/Vec3.h 
-                                    src/Ray.h 
-                                    src/Hittable.h 
-                                    src/Sphere.h 
-                                    src/Sphere.cpp 
-                                    src/HittableList.h 
-                                    src/HittableList.cpp 
-                                    src/Random.h 
-                                    src/Common/Camera.h 
-                                    src/Material.h 
+                                    src/Common/vec3.h 
+                                    src/Common/ray.h 
+                                    src/hittable.h 
+                                    src/sphere.h
+                                    src/sphere.cpp  
+                                    src/hittable_list.h
+                                    src/hittable_list.cpp 
+                                    src/Common/camera.h 
+                                    src/material.h 
                                     src/Common/aabb.h
                                     src/Common/External/toojpeg.h
                                     src/Common/External/toojpeg.cpp
-                                    src/bvhNode.h
-                                    src/Common/Color.h
-                                    src/Common/Texture.h)
+                                    src/bvh_node.h
+                                    src/bvh_node.cpp
+                                    src/Common/color.h
+                                    src/Common/texture.h
+                                    src/Common/External/stb_image_write.h
+                                    src/Common/External/stb_image.h
+                                    src/Common/common.h
+                                    src/Common/perlin.h
+                                    src/Common/rtw_stb_image.h
+                                    src/moving_sphere.h
+                                    src/moving_sphere.cpp)
