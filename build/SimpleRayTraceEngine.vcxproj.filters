@@ -19,6 +19,9 @@
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\moving_sphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\aarect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\vec3.h">
@@ -73,6 +76,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\moving_sphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\aarect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -329,6 +329,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\rtw_stb_image.h" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\moving_sphere.h" />
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\moving_sphere.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\aarect.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\aarect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="G:\Prog\SimpleRayTracingEngine\build\ZERO_CHECK.vcxproj">

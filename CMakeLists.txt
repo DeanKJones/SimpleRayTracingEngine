@@ -26,4 +26,6 @@ add_executable(SimpleRayTraceEngine src/main.cpp
                                     src/Common/perlin.h
                                     src/Common/rtw_stb_image.h
                                     src/moving_sphere.h
-                                    src/moving_sphere.cpp)
+                                    src/moving_sphere.cpp
+                                    src/aarect.h
+                                    src/aarect.cpp)
