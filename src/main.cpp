@@ -71,7 +71,7 @@ hittable_list random_scene() {
 
     // OBJECTS
     world.add(make_shared<sphere>(point3(0,-1000,0), 1000, make_shared<lambertian>(checker)));
-    world.add(make_shared<sphere>(point3(0, 1, 0), 1, make_shared<lambertian>(perlin_text)));
+    world.add(make_shared<sphere>(point3(0, 2, 0), 2, make_shared<lambertian>(perlin_text)));
     world.add(make_shared<xy_rect>(3, 5, 1, 3, -2, difflight));
 
     // Scattered Spheres
@@ -126,8 +126,8 @@ int main() {
     // Image
 
     const auto aspect_ratio = 16.0 / 9.0;
-    const int image_width = 720;
-    const int samples_per_pixel = 400;
+    const int image_width = 1024;
+    const int samples_per_pixel = 500;
     const int max_depth = 50;
 
     //auto image = new unsigned char[image_width * image_height * samples_per_pixel];
