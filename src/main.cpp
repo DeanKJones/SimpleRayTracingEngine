@@ -55,6 +55,11 @@ color ray_color(const ray& r, const color& background, const hittable& world, in
 hittable_list random_scene() {
     hittable_list world;
 
+    // Lambert Colors
+    auto red = make_shared<lambertian>(color(0.65, 0.05, 0.05));
+    auto white = make_shared<lambertian>(color(0.73, 0.73, 0.73));
+    auto green = make_shared<lambertian>(color(0.12, 0.45, 0.15));
+
     // Metal Material
     auto metalic_mat = make_shared<metal>(color(0.7, 0.6, 0.5), 0.0);
     //Glass Material
@@ -67,12 +72,21 @@ hittable_list random_scene() {
     auto image_text = make_shared<image_texture>("src\\Common\\External\\Textures\\roommates.jpg");
     auto image_surface = make_shared<lambertian>(image_text);
     // Emitter
-    auto difflight = make_shared<diffuse_light>(color(4, 4, 4));
+    auto emitter = make_shared<diffuse_light>(color(15, 15, 15));
 
     // OBJECTS
-    world.add(make_shared<sphere>(point3(0,-1000,0), 1000, make_shared<lambertian>(checker)));
-    world.add(make_shared<sphere>(point3(0, 2, 0), 2, make_shared<lambertian>(perlin_text)));
-    world.add(make_shared<xy_rect>(3, 5, 1, 3, -2, difflight));
+
+    // Empty Cornell Box
+    world.add(make_shared<yz_rect>(0, 555, 0, 555, 555, green));        // Left Wall
+    world.add(make_shared<yz_rect>(0, 555, 0, 555, 0, red));            // Right Wall
+    world.add(make_shared<xz_rect>(213, 343, 227, 332, 554, emitter));  // Light
+    world.add(make_shared<xz_rect>(0, 555, 0, 555, 0, white));          // Floor
+    world.add(make_shared<xz_rect>(0, 555, 0, 555, 555, white));        // Roof
+    world.add(make_shared<xy_rect>(0, 555, 0, 555, 555, white));        // Back Wall
+
+    // Geo 
+    // Box Center (227.5, 0.0, 227.5)
+    world.add(make_shared<sphere>(point3(227.5, 50, 227.5), 50, metalic_mat));
 
     // Scattered Spheres
     /*
@@ -125,9 +139,9 @@ int main() {
 
     // Image
 
-    const auto aspect_ratio = 16.0 / 9.0;
-    const int image_width = 1024;
-    const int samples_per_pixel = 500;
+    auto aspect_ratio = 16.0 / 9.0;
+    int image_width;
+    int samples_per_pixel;
     const int max_depth = 50;
 
     //auto image = new unsigned char[image_width * image_height * samples_per_pixel];
@@ -152,6 +166,9 @@ int main() {
             lookat = point3(0,0,0);
             vfov = 20.0;
             aperture = 0.1;
+            aspect_ratio = 16.0 / 9.0;
+            image_width = 500;
+            samples_per_pixel = 100;
             break;
 
         case 2:
@@ -161,6 +178,9 @@ int main() {
             lookfrom = point3(13,2,3);
             lookat = point3(0,0,0);
             vfov = 20.0;
+            aspect_ratio = 16.0 / 9.0;
+            image_width = 500;
+            samples_per_pixel = 100;
             break;
 
         case 3:
@@ -170,6 +190,9 @@ int main() {
             lookfrom = point3(13, 2, 3);
             lookat = point3(0, 0, 0);
             vfov = 20.0;
+            aspect_ratio = 16.0 / 9.0;
+            image_width = 500;
+            samples_per_pixel = 100;
             break;
 
         case 4:
@@ -179,6 +202,9 @@ int main() {
             lookfrom = point3(13, 2, 4);
             lookat = point3(0, 0, 0);
             vfov = 20.0;
+            aspect_ratio = 16.0 / 9.0;
+            image_width = 500;
+            samples_per_pixel = 100;
             break;
 
         case 5:
@@ -188,9 +214,11 @@ int main() {
             lookfrom = point3(13, 2, 4);
             lookat = point3(0, 0, 0);
             vfov = 20.0;
+            aspect_ratio = 16.0 / 9.0;
+            image_width = 720;
+            samples_per_pixel = 100;
             break;
 
-        default:
         case 6:
             world = random_scene();
             sky_is_active = false;
@@ -198,6 +226,22 @@ int main() {
             lookfrom = point3(26, 3, 6);
             lookat = point3(0, 2, 0);
             vfov = 20.0;
+            aspect_ratio = 16.0 / 9.0;
+            image_width = 512;
+            samples_per_pixel = 100;
+            break;
+
+        default:
+        case 7:
+            world = random_scene();
+            sky_is_active = false;
+            background = color(0.0, 0.0, 0.0);
+            lookfrom = point3(278, 278, -800);
+            lookat = point3(278, 278, 0);
+            vfov = 40;
+            aspect_ratio = 1.0;
+            image_width = 1024;
+            samples_per_pixel = 400;
             break;
     }
 
