@@ -10,6 +10,7 @@
 #include "moving_sphere.h"
 #include "Common\texture.h"
 #include "aarect.h"
+#include "constant_medium.h"
 
 #include <iostream>
 #include <fstream>
@@ -73,31 +74,37 @@ hittable_list random_scene() {
     auto image_text = make_shared<image_texture>("src\\Common\\External\\Textures\\roommates.jpg");
     auto image_surface = make_shared<lambertian>(image_text);
     // Emitter
-    auto emitter = make_shared<diffuse_light>(color(15, 15, 15));
+    auto emitter = make_shared<diffuse_light>(color(10, 10, 10));
+    // Volume
+    //auto volumetric = make_shared<constant_medium>(/*geo*/, 0.01, color(1, 1, 1));
 
     // OBJECTS
 
     // Empty Cornell Box
     world.add(make_shared<yz_rect>(0, 555, 0, 555, 555, green));        // Left Wall
     world.add(make_shared<yz_rect>(0, 555, 0, 555, 0, red));            // Right Wall
-    world.add(make_shared<xz_rect>(213, 343, 227, 332, 554, emitter));  // Light
+    world.add(make_shared<xz_rect>(163, 393, 177, 382, 554, emitter));  // Light
     world.add(make_shared<xz_rect>(0, 555, 0, 555, 0, white));          // Floor
     world.add(make_shared<xz_rect>(0, 555, 0, 555, 555, white));        // Roof
     world.add(make_shared<xy_rect>(0, 555, 0, 555, 555, white));        // Back Wall
 
     // Geo 
     // Box Center (227.5, 0.0, 227.5)
-    world.add(make_shared<sphere>(point3(150, 300, 300), 75, metalic_mat));
-    world.add(make_shared<sphere>(point3(400, 75, 150), 75, metalic_mat));
+    shared_ptr<hittable> sphere_01 = make_shared<sphere>(point3(150, 300, 300), 75, glass_mat);
+    shared_ptr<hittable> sphere_02 = make_shared<sphere>(point3(400, 75, 150), 75, white);
 
-    shared_ptr<hittable> box_01 = make_shared<box>(point3(0, 0, 0), point3(165, 330, 165), white);
+    shared_ptr<hittable> box_01 = make_shared<box>(point3(0, 0, 0), point3(165, 330, 165), metalic_mat);
     box_01 = make_shared<rotate_y>(box_01, 15);
     box_01 = make_shared<translate>(box_01, vec3(265, 0, 295));
-    world.add(box_01);
 
     shared_ptr<hittable> box_02 = make_shared<box>(point3(0, 0, 0), point3(165, 165, 165), white);
     box_02 = make_shared<rotate_y>(box_02, -18);
     box_02 = make_shared<translate>(box_02, vec3(130, 0, 65));
+
+    // Add to world
+    world.add(sphere_01);
+    world.add(make_shared<constant_medium>(sphere_02, 0.01, color(1, 1, 1)));
+    world.add(box_01);
     world.add(box_02);
 
     // Scattered Spheres
@@ -245,7 +252,6 @@ int main() {
             samples_per_pixel = 400;
             break;
 
-        default:
         case 8:
             world = random_scene();
             sky_is_active = false;
@@ -255,6 +261,18 @@ int main() {
             aspect_ratio = 1.0;
             image_width = 500;
             samples_per_pixel = 100;
+            break;
+
+        default:
+        case 9:
+            world = random_scene();
+            sky_is_active = false;
+            lookfrom = point3(278, 278, -800);
+            lookat = point3(278, 278, 0);
+            vfov = 40;
+            aspect_ratio = 1.0;
+            image_width = 1024;
+            samples_per_pixel = 1500;
             break;
     }
 

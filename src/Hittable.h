@@ -43,6 +43,12 @@ public:
     vec3 offset;
 };
 
+
+//
+//  ROTATIONS
+//  TODO : CHANGE TO QUATERNION CLASS
+//
+
 class rotate_y : public hittable {
 public:
     rotate_y(shared_ptr<hittable> p, double angle);

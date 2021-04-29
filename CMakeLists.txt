@@ -31,4 +31,6 @@ add_executable(SimpleRayTraceEngine src/main.cpp
                                     src/moving_sphere.h
                                     src/moving_sphere.cpp
                                     src/aarect.h
-                                    src/aarect.cpp)
+                                    src/aarect.cpp
+                                    src/constant_medium.h
+                                    src/constant_medium.cpp)

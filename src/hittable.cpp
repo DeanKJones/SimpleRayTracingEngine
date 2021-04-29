@@ -27,10 +27,9 @@ bool translate::bounding_box(double time0, double time1, aabb& output_box) const
     return true;
 }
 
-
-
 //
 //  ROTATIONS
+//  TODO : CHANGE TO QUATERNION CLASS
 //
 
 rotate_y::rotate_y(shared_ptr<hittable> p, double angle) : ptr(p) 

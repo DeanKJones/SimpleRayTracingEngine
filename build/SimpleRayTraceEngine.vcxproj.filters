@@ -28,6 +28,9 @@
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\aarect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\constant_medium.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\vec3.h">
@@ -88,6 +91,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\aarect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\constant_medium.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
