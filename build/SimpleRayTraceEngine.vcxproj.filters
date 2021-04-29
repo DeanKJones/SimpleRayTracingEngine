@@ -4,7 +4,13 @@
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\hittable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\sphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\box.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\hittable_list.cpp">
@@ -34,6 +40,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\sphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\box.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\hittable_list.h">

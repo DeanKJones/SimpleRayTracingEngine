@@ -309,8 +309,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\vec3.h" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\ray.h" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\hittable.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\hittable.cpp" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\sphere.h" />
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\sphere.cpp" />
+    <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\box.h" />
+    <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\box.cpp" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\hittable_list.h" />
     <ClCompile Include="G:\Prog\SimpleRayTracingEngine\src\hittable_list.cpp" />
     <ClInclude Include="G:\Prog\SimpleRayTracingEngine\src\Common\camera.h" />

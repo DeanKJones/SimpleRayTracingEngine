@@ -6,6 +6,7 @@
 #include "hittable_list.h"
 #include "material.h"
 #include "sphere.h"
+#include "box.h"
 #include "moving_sphere.h"
 #include "Common\texture.h"
 #include "aarect.h"
@@ -14,7 +15,7 @@
 #include <fstream>
 
 
-color ray_color(const ray& r, const color& background, const hittable& world, int depth, bool is_sky_active) {
+color ray_color(const ray& r, const hittable& world, int depth, bool is_sky_active) {
     hit_record rec;
 
     if (depth <= 0)
@@ -22,26 +23,27 @@ color ray_color(const ray& r, const color& background, const hittable& world, in
 
     if(!is_sky_active) 
     {
+        color background = color(0, 0, 0);
+
         if (!world.hit(r, 0.001, infinity, rec)) {
             return background;
         }
-
         ray scattered;
         color attenuation;
         color emitted = rec.mat_ptr->emitted(rec.u, rec.v, rec.p);
-
         if (!rec.mat_ptr->scatter(r, rec, attenuation, scattered))
             return emitted;
+        return emitted + attenuation * ray_color(scattered, world, depth - 1, is_sky_active);
 
-        return emitted + attenuation * ray_color(scattered, background, world, depth - 1, is_sky_active);
     }
     else 
     {
+
         if (world.hit(r, 0.001, infinity, rec)) {
             ray scattered;
             color attenuation;
         if (rec.mat_ptr->scatter(r, rec, attenuation, scattered))
-            return attenuation * ray_color(scattered, background, world, depth - 1, is_sky_active);
+            return attenuation * ray_color(scattered, world, depth - 1, is_sky_active);
         return color(0,0,0);
         }
 
@@ -59,7 +61,6 @@ hittable_list random_scene() {
     auto red = make_shared<lambertian>(color(0.65, 0.05, 0.05));
     auto white = make_shared<lambertian>(color(0.73, 0.73, 0.73));
     auto green = make_shared<lambertian>(color(0.12, 0.45, 0.15));
-
     // Metal Material
     auto metalic_mat = make_shared<metal>(color(0.7, 0.6, 0.5), 0.0);
     //Glass Material
@@ -86,7 +87,18 @@ hittable_list random_scene() {
 
     // Geo 
     // Box Center (227.5, 0.0, 227.5)
-    world.add(make_shared<sphere>(point3(227.5, 50, 227.5), 50, metalic_mat));
+    world.add(make_shared<sphere>(point3(150, 300, 300), 75, metalic_mat));
+    world.add(make_shared<sphere>(point3(400, 75, 150), 75, metalic_mat));
+
+    shared_ptr<hittable> box_01 = make_shared<box>(point3(0, 0, 0), point3(165, 330, 165), white);
+    box_01 = make_shared<rotate_y>(box_01, 15);
+    box_01 = make_shared<translate>(box_01, vec3(265, 0, 295));
+    world.add(box_01);
+
+    shared_ptr<hittable> box_02 = make_shared<box>(point3(0, 0, 0), point3(165, 165, 165), white);
+    box_02 = make_shared<rotate_y>(box_02, -18);
+    box_02 = make_shared<translate>(box_02, vec3(130, 0, 65));
+    world.add(box_02);
 
     // Scattered Spheres
     /*
@@ -144,8 +156,6 @@ int main() {
     int samples_per_pixel;
     const int max_depth = 50;
 
-    //auto image = new unsigned char[image_width * image_height * samples_per_pixel];
-
     // World
 
     hittable_list world;
@@ -154,14 +164,12 @@ int main() {
     point3 lookat;
     auto vfov = 40.0;
     auto aperture = 0.0;
-    color background(0, 0, 0);
     bool sky_is_active;
 
     switch (0) {
         case 1:
             world = random_scene();
             sky_is_active = true;
-            background = color(0.70, 0.80, 1.00);
             lookfrom = point3(13,2,3);
             lookat = point3(0,0,0);
             vfov = 20.0;
@@ -174,7 +182,6 @@ int main() {
         case 2:
             world = random_scene();
             sky_is_active = true;
-            background = color(0.70, 0.80, 1.00);
             lookfrom = point3(13,2,3);
             lookat = point3(0,0,0);
             vfov = 20.0;
@@ -186,7 +193,6 @@ int main() {
         case 3:
             world = random_scene();
             sky_is_active = true;
-            background = color(0.70, 0.80, 1.00);
             lookfrom = point3(13, 2, 3);
             lookat = point3(0, 0, 0);
             vfov = 20.0;
@@ -198,19 +204,17 @@ int main() {
         case 4:
             world = random_scene();
             sky_is_active = true;
-            background = color(0.70, 0.80, 1.00);
             lookfrom = point3(13, 2, 4);
             lookat = point3(0, 0, 0);
             vfov = 20.0;
             aspect_ratio = 16.0 / 9.0;
-            image_width = 500;
-            samples_per_pixel = 100;
+            image_width = 350;
+            samples_per_pixel = 50;
             break;
 
         case 5:
             world = random_scene();
             sky_is_active = false;
-            background = color(0.0, 0.0, 0.0);
             lookfrom = point3(13, 2, 4);
             lookat = point3(0, 0, 0);
             vfov = 20.0;
@@ -222,7 +226,6 @@ int main() {
         case 6:
             world = random_scene();
             sky_is_active = false;
-            background = color(0.0, 0.0, 0.0);
             lookfrom = point3(26, 3, 6);
             lookat = point3(0, 2, 0);
             vfov = 20.0;
@@ -231,17 +234,27 @@ int main() {
             samples_per_pixel = 100;
             break;
 
-        default:
         case 7:
             world = random_scene();
             sky_is_active = false;
-            background = color(0.0, 0.0, 0.0);
             lookfrom = point3(278, 278, -800);
             lookat = point3(278, 278, 0);
             vfov = 40;
             aspect_ratio = 1.0;
             image_width = 1024;
             samples_per_pixel = 400;
+            break;
+
+        default:
+        case 8:
+            world = random_scene();
+            sky_is_active = false;
+            lookfrom = point3(278, 278, -800);
+            lookat = point3(278, 278, 0);
+            vfov = 40;
+            aspect_ratio = 1.0;
+            image_width = 500;
+            samples_per_pixel = 100;
             break;
     }
 
@@ -269,7 +282,7 @@ int main() {
                 auto u = (i + random_double()) / (image_width-1);
                 auto v = (j + random_double()) / (image_height-1);
                 ray r = cam.get_ray(u, v);
-                pixel_color += ray_color(r, background, world, max_depth, sky_is_active);
+                pixel_color += ray_color(r, world, max_depth, sky_is_active);
             }
             write_color(std::cout, pixel_color, samples_per_pixel);
 

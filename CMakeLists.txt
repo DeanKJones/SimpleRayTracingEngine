@@ -6,9 +6,12 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(SimpleRayTraceEngine src/main.cpp 
                                     src/Common/vec3.h 
                                     src/Common/ray.h 
-                                    src/hittable.h 
+                                    src/hittable.h
+                                    src/hittable.cpp 
                                     src/sphere.h
-                                    src/sphere.cpp  
+                                    src/sphere.cpp
+                                    src/box.h
+                                    src/box.cpp  
                                     src/hittable_list.h
                                     src/hittable_list.cpp 
                                     src/Common/camera.h 
